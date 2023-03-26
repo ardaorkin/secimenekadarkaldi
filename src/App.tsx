@@ -27,16 +27,19 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {Object.entries(remainings).map(([key, value], idx) => (
-        <div className="remaining" key={idx}>
-          <p>
-            {value}
-            <span className="type">{TR_TYPES[key as keyof Remainings]}</span>
-          </p>
-        </div>
-      ))}
-    </div>
+    <>
+      <h1>2023 Türkiye Cumhuriyeti Cumhurbaşkanlığı Seçimlerine Kalan Süre</h1>
+      <div className="App">
+        {Object.entries(remainings).map(([key, value], idx) => (
+          <div className="remaining" key={idx}>
+            <p>
+              {value}
+              <span className="type">{TR_TYPES[key as keyof Remainings]}</span>
+            </p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 

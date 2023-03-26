@@ -3,6 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  overflow-y: hidden;
 }
 
 .App {
@@ -32,4 +33,10 @@
   display: block;
   font-size: 20px;
   color: rgb(136, 136, 133);
+}
+
+@media (max-width: 800px) {
+  .App {
+    flex-direction: column;
+  }
 }
