@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import { Row, Col } from "antd";
 import { getRemainings } from "./utils";
 import { Remainings, TR_TYPES } from "./types";
+import "./App.css";
 
 const electionDay = new Date("2023-05-14").getTime();
 
@@ -29,16 +30,16 @@ function App() {
   return (
     <>
       <h1>2023 Türkiye Cumhuriyeti Cumhurbaşkanlığı Seçimlerine Kalan Süre</h1>
-      <div className="App">
+      <Row className="App">
         {Object.entries(remainings).map(([key, value], idx) => (
-          <div className="remaining" key={idx}>
+          <Col className="remaining" key={idx}>
             <p>
               {value}
               <span className="type">{TR_TYPES[key as keyof Remainings]}</span>
             </p>
-          </div>
+          </Col>
         ))}
-      </div>
+      </Row>
     </>
   );
 }
