@@ -4,7 +4,7 @@ import { getRemainings } from "./utils";
 import { Remainings, TR_TYPES } from "./types";
 import "./App.css";
 
-const electionDay = new Date("2023-05-14").getTime();
+const electionDay = new Date("2023-05-14 08:00:00").getTime();
 
 function App() {
   const [remainings, setRemainings] = useState<Remainings>({
