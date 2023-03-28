@@ -1,6 +1,7 @@
 import "./App.css";
 import Alliances from "./comtainers/Alliances";
 import Counter from "./comtainers/Counter";
+import Survey from "./comtainers/Survey";
 import TwitterCards from "./comtainers/TwitterWidgets";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Counter />
       <TwitterCards />
       <Alliances />
+      <Survey />
     </>
   );
 }
