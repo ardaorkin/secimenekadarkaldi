@@ -2,14 +2,19 @@ import { Timeline } from "react-twitter-widgets";
 import Slider from "react-slick";
 import NextArrow from "../components/NextArrow";
 import PrevArrow from "../components/PrevArrow";
+import { useState } from "react";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
+
+const antIcon = <LoadingOutlined style={{ fontSize: "3em" }} spin />;
 
 const nominees = ["kilicdarogluk", "RTErdogan", "vekilince"];
 const settings = {
   dots: false,
-  infinite: false,
+  infinite: true,
   speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 4,
+  slidesToShow: nominees.length,
+  slidesToScroll: nominees.length,
   initialSlide: 0,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
@@ -17,8 +22,8 @@ const settings = {
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 2,
+        slidesToScroll: 2,
         infinite: true,
         dots: true,
       },
@@ -41,22 +46,26 @@ const settings = {
   ],
 };
 export default function TwitterCards() {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   return (
     <div id="twitter-cards" className="page">
       <h1>Adaylar Ne Diyor?</h1>
       <Slider {...settings}>
         {nominees.map((nominee, idx) => (
-          <Timeline
-            key={idx}
-            dataSource={{
-              sourceType: "profile",
-              screenName: nominee,
-            }}
-            options={{
-              height: "400",
-              width: "400",
-            }}
-          />
+          <div key={idx}>
+            {!isLoaded && <Spin indicator={antIcon} />}
+            <Timeline
+              onLoad={() => setIsLoaded(true)}
+              dataSource={{
+                sourceType: "profile",
+                screenName: nominee,
+              }}
+              options={{
+                height: "400",
+                width: "400",
+              }}
+            />
+          </div>
         ))}
       </Slider>
     </div>
