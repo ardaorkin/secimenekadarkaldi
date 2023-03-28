@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Card, Typography } from "antd";
 import { getRemainings } from "../utils";
 import { Remainings, TR_TYPES } from "../types";
 const electionDay = new Date("2023-05-14 08:00:00").getTime();
@@ -26,17 +26,17 @@ export default function Counter() {
   }, []);
   return (
     <div id="counter" className="page">
-      <h1>2023 Türkiye Cumhuriyeti Cumhurbaşkanlığı Seçimlerine Kalan Süre</h1>
-      <Row className="App">
+      <Typography.Title>2023 Türkiye Cumhuriyeti Cumhurbaşkanlığı Seçimlerine Kalan Süre</Typography.Title>
+      <div style={{ display: "flex", flexDirection: "row" }}>
         {Object.entries(remainings).map(([key, value], idx) => (
-          <Col className="remaining" key={idx}>
+          <Card className="remaining" key={idx}>
             <p>
               {value}
               <span className="type">{TR_TYPES[key as keyof Remainings]}</span>
             </p>
-          </Col>
+          </Card>
         ))}
-      </Row>
+      </div>
     </div>
   );
 }
