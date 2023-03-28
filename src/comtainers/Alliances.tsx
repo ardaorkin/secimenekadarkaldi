@@ -147,9 +147,12 @@ export default function Alliances() {
           </div>
         ))}
       </Slider>
-      <div style={{ textAlign: "start", marginTop: -100 }}>
+      <div style={{ textAlign: "start" }}>
         <Typography.Text type="secondary">
-          Kaynak: <a href="https://www.wikipedia.org/">Wikipedia</a>
+          Kaynak:{" "}
+          <a href="https://www.wikipedia.org/" target="_blank">
+            Wikipedia
+          </a>
         </Typography.Text>
       </div>
     </div>
