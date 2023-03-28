@@ -50,10 +50,12 @@ export default function TwitterCards() {
   return (
     <div id="twitter-cards" className="page">
       <h1>Adaylar Ne Diyor?</h1>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+        {!isLoaded && <Spin indicator={antIcon} />}
+      </div>
       <Slider {...settings}>
         {nominees.map((nominee, idx) => (
           <div key={idx}>
-            {!isLoaded && <Spin indicator={antIcon} />}
             <Timeline
               onLoad={() => setIsLoaded(true)}
               dataSource={{
