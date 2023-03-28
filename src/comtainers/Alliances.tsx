@@ -138,6 +138,7 @@ export default function Alliances() {
   return (
     <div id="alliance" className="page">
       <h1>Seçim İttifakları</h1>
+      <h3>Kim kiminle ittifak?</h3>
       <Slider {...settings}>
         {Object.entries(alliances).map(([allianceName, members], idx) => (
           <div key={idx}>
