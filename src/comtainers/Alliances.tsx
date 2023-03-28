@@ -8,7 +8,7 @@ import dpIcon from "../assets/dp.png";
 import saadetIcon from "../assets/saadet.svg";
 import devaIcon from "../assets/deva.svg";
 import gelecekIcon from "../assets/gelecek.svg";
-import { Table } from "antd";
+import { Table, Typography } from "antd";
 import Slider from "react-slick";
 import NextArrow from "../components/NextArrow";
 import PrevArrow from "../components/PrevArrow";
@@ -125,7 +125,7 @@ const columns = [
 ];
 
 const settings = {
-  dots: true,
+  dots: false,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
@@ -147,6 +147,11 @@ export default function Alliances() {
           </div>
         ))}
       </Slider>
+      <div style={{ textAlign: "start", marginTop: -100 }}>
+        <Typography.Text type="secondary">
+          Kaynak: <a href="https://www.wikipedia.org/">Wikipedia</a>
+        </Typography.Text>
+      </div>
     </div>
   );
 }
