@@ -32,6 +32,7 @@
 }
 
 .page {
+  padding-top: 5em;
   min-height: 100vh;
 }
 
