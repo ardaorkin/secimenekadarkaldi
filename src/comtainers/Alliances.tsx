@@ -137,12 +137,14 @@ const settings = {
 export default function Alliances() {
   return (
     <div id="alliance" className="page">
-      <h1>Seçim İttifakları</h1>
-      <h3>Kim kiminle ittifak?</h3>
+      <Typography.Title>Seçim İttifakları</Typography.Title>
+      <Typography.Text>Kim kiminle ittifak?</Typography.Text>
       <Slider {...settings}>
         {Object.entries(alliances).map(([allianceName, members], idx) => (
           <div key={idx}>
-            <h2 style={{ textAlign: "start" }}>{allianceName}</h2>
+            <Typography.Title level={4} style={{ textAlign: "start" }}>
+              {allianceName}
+            </Typography.Title>
             <Table dataSource={members} columns={columns} pagination={false} />
           </div>
         ))}
