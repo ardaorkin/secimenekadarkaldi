@@ -67,21 +67,19 @@ export default function TwitterCards() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
               {!loadedWidgets.includes(idx) && <Spin indicator={antIcon} />}
             </div>
-            <ErrorBoundary>
-              {nomineeWillMount === idx || loadedWidgets.length >= idx + 1 ? (
-                <Timeline
-                  onLoad={() => setLoadedWidgets((prev) => (!prev.includes(idx) ? [...prev, idx] : [...prev]))}
-                  dataSource={{
-                    sourceType: "profile",
-                    screenName: nominee,
-                  }}
-                  options={{
-                    height: "400",
-                    width: "400",
-                  }}
-                />
-              ) : null}
-            </ErrorBoundary>
+            {nomineeWillMount === idx || loadedWidgets.length >= idx + 1 ? (
+              <Timeline
+                onLoad={() => setLoadedWidgets((prev) => (!prev.includes(idx) ? [...prev, idx] : [...prev]))}
+                dataSource={{
+                  sourceType: "profile",
+                  screenName: nominee,
+                }}
+                options={{
+                  height: "400",
+                  width: "400",
+                }}
+              />
+            ) : null}
           </div>
         ))}
       </Slider>
