@@ -5,7 +5,6 @@ export default function Survey() {
         id="secim-anketi"
         title="Form"
         onLoad={() => window.parent.scrollTo(0, 0)}
-        allowTransparency={true}
         allowFullScreen={true}
         src="https://form.jotform.com/230861054196961"
         frameBorder={0}

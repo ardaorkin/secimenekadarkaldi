@@ -12,7 +12,6 @@ const nominees = ["kilicdarogluk", "RTErdogan", "vekilince", "DrSinanOgan"];
 const settings = {
   dots: true,
   infinite: true,
-  autoplay: true,
   speed: 1000,
   slidesToShow: nominees.length > 3 ? 3 : nominees.length,
   slidesToScroll: nominees.length > 3 ? 3 : nominees.length,
@@ -47,7 +46,7 @@ const settings = {
   ],
 };
 export default function TwitterCards() {
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [loadedWidgets, setLoadedWidgets] = useState<number[]>([]);
   return (
     <div id="twitter-cards" className="page">
       <Typography.Title level={1} style={{ textAlign: "start", margin: 0 }}>
@@ -56,14 +55,14 @@ export default function TwitterCards() {
       <Typography.Text style={{ textAlign: "start", display: "block", marginBottom: "2em" }}>
         Cumhurbaşkanı adaylarından son tweetler
       </Typography.Text>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
-        {!isLoaded && <Spin indicator={antIcon} />}
-      </div>
-      <Slider {...settings}>
+      <Slider {...settings} autoplay={loadedWidgets.length === nominees.length}>
         {nominees.map((nominee, idx) => (
           <div key={idx}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+              {!loadedWidgets.includes(idx) && <Spin indicator={antIcon} />}
+            </div>
             <Timeline
-              onLoad={() => setIsLoaded(true)}
+              onLoad={() => setLoadedWidgets((prev) => [...prev, idx])}
               dataSource={{
                 sourceType: "profile",
                 screenName: nominee,
