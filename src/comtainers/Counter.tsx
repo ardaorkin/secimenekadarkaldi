@@ -16,15 +16,20 @@ export default function Counter() {
     const remainingInterval = setInterval(() => {
       const now = new Date().getTime();
       const diff = electionDay - now;
-
-      setRemainings(() => getRemainings(diff));
+      if (electionDay >= now) {
+        setRemainings(() => getRemainings(diff));
+      }
     }, 1000);
 
     return () => clearInterval(remainingInterval);
   }, []);
+
   return (
     <div id="counter" className="page">
       <Typography.Title style={{ textAlign: "start" }}>Seçim Sayacı</Typography.Title>
+      <Typography.Text style={{ textAlign: "start", display: "block", marginBottom: "2em" }}>
+        2023 Türkiye Cumhuriyeti Cumhurbaşkanlığı Seçimleri'ne kalan süre...
+      </Typography.Text>
       <div style={{ display: "flex", flexDirection: "row" }}>
         {Object.entries(remainings).map(([key, value], idx) => (
           <Card className="remaining" key={idx}>
@@ -35,6 +40,7 @@ export default function Counter() {
           </Card>
         ))}
       </div>
+      <Typography.Text>Seçim tarihi 14 Mayıs 2023</Typography.Text>
       <Divider />
       <div style={{ textAlign: "start" }}>
         <Typography.Paragraph>
