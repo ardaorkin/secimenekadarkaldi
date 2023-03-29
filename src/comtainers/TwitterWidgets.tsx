@@ -2,9 +2,10 @@ import { Timeline } from "react-twitter-widgets";
 import Slider from "react-slick";
 import NextArrow from "../components/NextArrow";
 import PrevArrow from "../components/PrevArrow";
-import { useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin, Typography } from "antd";
+import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 
 const antIcon = <LoadingOutlined style={{ fontSize: "3em" }} spin />;
 
@@ -47,6 +48,11 @@ const settings = {
 };
 export default function TwitterCards() {
   const [loadedWidgets, setLoadedWidgets] = useState<number[]>([]);
+  const [nomineeWillMount, setNomineeWillMount] = useState<number>(0);
+  useEffect(() => {
+    setNomineeWillMount(() => loadedWidgets.length);
+  }, [loadedWidgets]);
+
   return (
     <div id="twitter-cards" className="page">
       <Typography.Title level={1} style={{ textAlign: "start", margin: 0 }}>
@@ -61,17 +67,21 @@ export default function TwitterCards() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
               {!loadedWidgets.includes(idx) && <Spin indicator={antIcon} />}
             </div>
-            <Timeline
-              onLoad={() => setLoadedWidgets((prev) => [...prev, idx])}
-              dataSource={{
-                sourceType: "profile",
-                screenName: nominee,
-              }}
-              options={{
-                height: "400",
-                width: "400",
-              }}
-            />
+            <ErrorBoundary>
+              {nomineeWillMount === idx || loadedWidgets.length >= idx + 1 ? (
+                <Timeline
+                  onLoad={() => setLoadedWidgets((prev) => (!prev.includes(idx) ? [...prev, idx] : [...prev]))}
+                  dataSource={{
+                    sourceType: "profile",
+                    screenName: nominee,
+                  }}
+                  options={{
+                    height: "400",
+                    width: "400",
+                  }}
+                />
+              ) : null}
+            </ErrorBoundary>
           </div>
         ))}
       </Slider>
