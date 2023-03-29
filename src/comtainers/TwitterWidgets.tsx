@@ -14,7 +14,7 @@ const settings = {
   infinite: true,
   speed: 1000,
   slidesToShow: nominees.length > 3 ? 3 : nominees.length,
-  slidesToScroll: nominees.length > 3 ? 3 : nominees.length,
+  slidesToScroll: 1,
   initialSlide: 0,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
