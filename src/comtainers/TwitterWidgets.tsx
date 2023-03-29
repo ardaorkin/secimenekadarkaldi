@@ -49,7 +49,7 @@ export default function TwitterCards() {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   return (
     <div id="twitter-cards" className="page">
-      <h1>Cumhurbaşkanı Adayları Ne Diyor?</h1>
+      <h1 style={{ textAlign: "start" }}>Cumhurbaşkanı Adayları Ne Diyor?</h1>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
         {!isLoaded && <Spin indicator={antIcon} />}
       </div>

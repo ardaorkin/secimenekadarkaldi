@@ -127,7 +127,8 @@ const columns = [
 const settings = {
   dots: false,
   infinite: true,
-  speed: 500,
+  autoplay: true,
+  speed: 1000,
   slidesToShow: 1,
   slidesToScroll: 1,
   initialSlide: 0,
@@ -137,8 +138,8 @@ const settings = {
 export default function Alliances() {
   return (
     <div id="alliance" className="page">
-      <Typography.Title>Seçim İttifakları</Typography.Title>
-      <Typography.Text>Kim kiminle ittifak?</Typography.Text>
+      <Typography.Title style={{ textAlign: "start" }}>Seçim İttifakları</Typography.Title>
+      <Typography.Text style={{ textAlign: "start" }}>Kim kiminle ittifak?</Typography.Text>
       <Slider {...settings}>
         {Object.entries(alliances).map(([allianceName, members], idx) => (
           <div key={idx}>
