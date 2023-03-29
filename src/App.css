@@ -38,7 +38,6 @@
 }
 
 #counter {
-  min-width: 100vh;
   display: flex;
   flex-direction: column;
   align-items: start;

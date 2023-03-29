@@ -27,10 +27,10 @@ export default function Counter() {
   return (
     <div id="counter" className="page">
       <Typography.Title style={{ textAlign: "start" }}>Seçim Sayacı</Typography.Title>
-      <Typography.Text style={{ textAlign: "start", display: "block", marginBottom: "2em" }}>
+      <Typography.Text style={{ textAlign: "start", display: "inline-block", marginBottom: "2em", minWidth: "100vh" }}>
         2023 Türkiye Cumhuriyeti Cumhurbaşkanlığı Seçimleri'ne kalan süre...
       </Typography.Text>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ display: "flex", flexDirection: "row", marginBottom: "1em" }}>
         {Object.entries(remainings).map(([key, value], idx) => (
           <Card className="remaining" key={idx}>
             <p>
