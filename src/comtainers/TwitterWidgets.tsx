@@ -8,7 +8,7 @@ import { Spin } from "antd";
 
 const antIcon = <LoadingOutlined style={{ fontSize: "3em" }} spin />;
 
-const nominees = ["kilicdarogluk", "RTErdogan", "vekilince"];
+const nominees = ["kilicdarogluk", "RTErdogan", "vekilince", "DrSinanOgan"];
 const settings = {
   dots: false,
   infinite: true,
