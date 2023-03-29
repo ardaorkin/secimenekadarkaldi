@@ -64,7 +64,15 @@ export default function TwitterCards() {
       <Slider {...settings} autoplay={loadedWidgets.length === nominees.length}>
         {nominees.map((nominee, idx) => (
           <div key={idx}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
+            <div
+              style={{
+                display: loadedWidgets.includes(idx) ? "none" : "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                height: 500,
+              }}
+            >
               {!loadedWidgets.includes(idx) && <Spin indicator={antIcon} />}
             </div>
             {nomineeWillMount === idx || loadedWidgets.length >= idx + 1 ? (
