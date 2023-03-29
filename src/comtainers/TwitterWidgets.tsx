@@ -75,7 +75,7 @@ export default function TwitterCards() {
                   screenName: nominee,
                 }}
                 options={{
-                  height: "400",
+                  height: "500",
                   width: "400",
                 }}
               />
