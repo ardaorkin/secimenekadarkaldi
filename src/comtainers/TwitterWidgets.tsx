@@ -10,11 +10,12 @@ const antIcon = <LoadingOutlined style={{ fontSize: "3em" }} spin />;
 
 const nominees = ["kilicdarogluk", "RTErdogan", "vekilince", "DrSinanOgan"];
 const settings = {
-  dots: false,
+  dots: true,
   infinite: true,
-  speed: 500,
-  slidesToShow: nominees.length,
-  slidesToScroll: nominees.length,
+  autoplay: true,
+  speed: 1000,
+  slidesToShow: nominees.length > 3 ? 3 : nominees.length,
+  slidesToScroll: nominees.length > 3 ? 3 : nominees.length,
   initialSlide: 0,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
