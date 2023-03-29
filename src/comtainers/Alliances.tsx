@@ -12,6 +12,7 @@ import { Table, Typography } from "antd";
 import Slider from "react-slick";
 import NextArrow from "../components/NextArrow";
 import PrevArrow from "../components/PrevArrow";
+import { useState } from "react";
 
 const alliances = {
   "Cumhur İttifakı": [
@@ -136,16 +137,19 @@ const settings = {
   prevArrow: <PrevArrow />,
 };
 export default function Alliances() {
+  const [currentAlliance, setCurrentAliance] = useState<string>("");
+
+  const handleBeforeChange = (id: number) => setCurrentAliance(Object.keys(alliances)[id]);
   return (
     <div id="alliance" className="page">
       <Typography.Title style={{ textAlign: "start" }}>Seçim İttifakları</Typography.Title>
-      <Typography.Text style={{ textAlign: "start" }}>Kim kiminle ittifak?</Typography.Text>
-      <Slider {...settings}>
+      <Typography.Text style={{ textAlign: "start", display: "block" }}>Kim kiminle ittifak?</Typography.Text>
+      <Typography.Title level={4} style={{ textAlign: "start" }}>
+        {currentAlliance}
+      </Typography.Title>
+      <Slider {...settings} beforeChange={handleBeforeChange}>
         {Object.entries(alliances).map(([allianceName, members], idx) => (
           <div key={idx}>
-            <Typography.Title level={4} style={{ textAlign: "start" }}>
-              {allianceName}
-            </Typography.Title>
             <Table dataSource={members} columns={columns} pagination={false} />
           </div>
         ))}
