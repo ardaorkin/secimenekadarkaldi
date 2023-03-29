@@ -43,3 +43,9 @@
   flex-direction: column;
   align-items: start;
 }
+
+#twitter-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

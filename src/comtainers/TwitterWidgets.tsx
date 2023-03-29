@@ -4,7 +4,7 @@ import NextArrow from "../components/NextArrow";
 import PrevArrow from "../components/PrevArrow";
 import { useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
-import { Spin } from "antd";
+import { Spin, Typography } from "antd";
 
 const antIcon = <LoadingOutlined style={{ fontSize: "3em" }} spin />;
 
@@ -49,7 +49,12 @@ export default function TwitterCards() {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   return (
     <div id="twitter-cards" className="page">
-      <h1 style={{ textAlign: "start" }}>Cumhurbaşkanı Adayları Ne Diyor?</h1>
+      <Typography.Title level={1} style={{ textAlign: "start", margin: 0 }}>
+        Cumhurbaşkanı Adayları Ne Diyor?
+      </Typography.Title>
+      <Typography.Text style={{ textAlign: "start", display: "block", marginBottom: "2em" }}>
+        Cumhurbaşkanı adaylarından son tweetler
+      </Typography.Text>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
         {!isLoaded && <Spin indicator={antIcon} />}
       </div>
