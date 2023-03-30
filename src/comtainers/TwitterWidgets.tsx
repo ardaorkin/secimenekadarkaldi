@@ -92,12 +92,22 @@ export default function TwitterCards() {
                 />
               </>
             ) : (
-              <Button
-                type="link"
-                onClick={() => setShowingTweets((prev) => (prev.includes(idx) ? [...prev] : [...prev, idx]))}
+              <div
+                style={{
+                  display: loadedWidgets.includes(idx) ? "none" : "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  height: 500,
+                }}
               >
-                {name} için son gelişmeleri göster
-              </Button>
+                <Button
+                  type="link"
+                  onClick={() => setShowingTweets((prev) => (prev.includes(idx) ? [...prev] : [...prev, idx]))}
+                >
+                  {name} için son gelişmeleri göster
+                </Button>
+              </div>
             )}
           </div>
         ))}
