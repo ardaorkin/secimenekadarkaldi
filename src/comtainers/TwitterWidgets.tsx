@@ -4,12 +4,17 @@ import NextArrow from "../components/NextArrow";
 import PrevArrow from "../components/PrevArrow";
 import { lazy, useEffect, useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
-import { Spin, Typography } from "antd";
+import { Button, Spin, Typography } from "antd";
 import ErrorBoundary from "antd/es/alert/ErrorBoundary";
 
 const antIcon = <LoadingOutlined style={{ fontSize: "3em" }} spin />;
 
-const nominees = ["kilicdarogluk", "RTErdogan", "vekilince", "DrSinanOgan"];
+const nominees = [
+  { name: "Kemal Kılıçdaroğlu", username: "kilicdarogluk" },
+  { name: "Recep Tayyip Erdoğan", username: "RTErdogan" },
+  { name: "Muharrem İnce", username: "vekilince" },
+  { name: "Sinan Oğan", username: "DrSinanOgan" },
+];
 const settings = {
   dots: true,
   infinite: true,
@@ -48,10 +53,7 @@ const settings = {
 };
 export default function TwitterCards() {
   const [loadedWidgets, setLoadedWidgets] = useState<number[]>([]);
-  const [nomineeWillMount, setNomineeWillMount] = useState<number>(0);
-  useEffect(() => {
-    setNomineeWillMount(() => loadedWidgets.length);
-  }, [loadedWidgets]);
+  const [showingTweets, setShowingTweets] = useState<number[]>([]);
 
   return (
     <div id="twitter-cards" className="page">
@@ -62,32 +64,41 @@ export default function TwitterCards() {
         Cumhurbaşkanı adaylarından son tweetler
       </Typography.Text>
       <Slider {...settings} autoplay={loadedWidgets.length === nominees.length}>
-        {nominees.map((nominee, idx) => (
+        {nominees.map(({ name, username }, idx) => (
           <div key={idx}>
-            <div
-              style={{
-                display: loadedWidgets.includes(idx) ? "none" : "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textAlign: "center",
-                height: 500,
-              }}
-            >
-              {!loadedWidgets.includes(idx) && <Spin indicator={antIcon} />}
-            </div>
-            {nomineeWillMount === idx || loadedWidgets.length >= idx + 1 ? (
-              <Timeline
-                onLoad={() => setLoadedWidgets((prev) => (!prev.includes(idx) ? [...prev, idx] : [...prev]))}
-                dataSource={{
-                  sourceType: "profile",
-                  screenName: nominee,
-                }}
-                options={{
-                  height: "500",
-                  width: "400",
-                }}
-              />
-            ) : null}
+            {showingTweets.includes(idx) ? (
+              <>
+                <div
+                  style={{
+                    display: loadedWidgets.includes(idx) ? "none" : "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    height: 500,
+                  }}
+                >
+                  {!loadedWidgets.includes(idx) && <Spin indicator={antIcon} />}
+                </div>
+                <Timeline
+                  onLoad={() => setLoadedWidgets((prev) => (!prev.includes(idx) ? [...prev, idx] : [...prev]))}
+                  dataSource={{
+                    sourceType: "profile",
+                    screenName: username,
+                  }}
+                  options={{
+                    height: "500",
+                    width: "400",
+                  }}
+                />
+              </>
+            ) : (
+              <Button
+                type="link"
+                onClick={() => setShowingTweets((prev) => (prev.includes(idx) ? [...prev] : [...prev, idx]))}
+              >
+                {name} için son gelişmeleri göster
+              </Button>
+            )}
           </div>
         ))}
       </Slider>
