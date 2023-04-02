@@ -1,8 +1,8 @@
 import "./App.css";
-import Alliances from "./comtainers/Alliances";
-import Counter from "./comtainers/Counter";
-import Survey from "./comtainers/Survey";
-import TwitterCards from "./comtainers/TwitterWidgets";
+import Alliances from "./containers/Alliances";
+import Counter from "./containers/Counter";
+import Survey from "./containers/Survey";
+import TwitterCards from "./containers/TwitterWidgets";
 
 function App() {
   return (
