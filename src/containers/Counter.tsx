@@ -30,7 +30,7 @@ export default function Counter() {
       <Typography.Text style={{ textAlign: "start", display: "inline-block", marginBottom: "2em", minWidth: "100vh" }}>
         2023 Türkiye Cumhuriyeti Cumhurbaşkanlığı Seçimleri'ne kalan süre...
       </Typography.Text>
-      <div style={{ display: "flex", flexDirection: "row", marginBottom: "1em" }}>
+      <div style={{ display: "flex", flexDirection: "row", marginBottom: "1em", flexWrap: "wrap", width: "100%" }}>
         {Object.entries(remainings).map(([key, value], idx) => (
           <Card className="remaining" key={idx}>
             <p>

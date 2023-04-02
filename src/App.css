@@ -48,3 +48,15 @@
   flex-direction: column;
   justify-content: center;
 }
+
+@media only screen and (max-width: 600px) {
+  .remaining {
+    width: 100px;
+    height: 110px;
+    font-size: 18px;
+  }
+  .type {
+    font-size: 10px;
+    display: block;
+  }
+}
