@@ -1,6 +1,6 @@
 export default function Survey() {
   return (
-    <div className="page" id="secim-anketi-section">
+    <div className="page" id="survey">
       <iframe
         id="secim-anketi"
         title="Form"

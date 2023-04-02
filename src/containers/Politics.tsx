@@ -45,7 +45,7 @@ const settings = {
 export default function Politics() {
   const [loadedWidgets, setLoadedWidgets] = useState<number[]>([]);
   return (
-    <div id="twitter-cards" className="page">
+    <div id="politics" className="page">
       <Typography.Title level={2} style={{ textAlign: "start", margin: 0 }}>
         Cumhurbaşkanı Adayları Ne Diyor?
       </Typography.Title>
