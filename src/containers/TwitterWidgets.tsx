@@ -57,7 +57,7 @@ export default function TwitterCards() {
 
   return (
     <div id="twitter-cards" className="page">
-      <Typography.Title level={1} style={{ textAlign: "start", margin: 0 }}>
+      <Typography.Title level={2} style={{ textAlign: "start", margin: 0 }}>
         Cumhurbaşkanı Adayları Ne Diyor?
       </Typography.Title>
       <Typography.Text style={{ textAlign: "start", display: "block", marginBottom: "2em" }}>

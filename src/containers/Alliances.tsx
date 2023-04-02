@@ -141,7 +141,9 @@ export default function Alliances() {
   const handleBeforeChange = (id: number) => setCurrentAliance(Object.keys(alliances)[id]);
   return (
     <div id="alliance" className="page">
-      <Typography.Title style={{ textAlign: "start" }}>Seçim İttifakları</Typography.Title>
+      <Typography.Title level={2} style={{ textAlign: "start" }}>
+        Seçim İttifakları
+      </Typography.Title>
       <Typography.Text style={{ textAlign: "start", display: "block" }}>Kim kiminle ittifak?</Typography.Text>
       <Typography.Title level={4} style={{ textAlign: "start" }}>
         {currentAlliance}
