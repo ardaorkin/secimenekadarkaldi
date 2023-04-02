@@ -2,19 +2,10 @@ import { Timeline } from "react-twitter-widgets";
 import Slider from "react-slick";
 import NextArrow from "../components/NextArrow";
 import PrevArrow from "../components/PrevArrow";
-import { lazy, useEffect, useState } from "react";
-import { LoadingOutlined } from "@ant-design/icons";
-import { Button, Spin, Typography } from "antd";
-import ErrorBoundary from "antd/es/alert/ErrorBoundary";
+import { useState } from "react";
+import { Spin, Typography } from "antd";
 
-const antIcon = <LoadingOutlined style={{ fontSize: "3em" }} spin />;
-
-const nominees = [
-  { name: "Kemal Kılıçdaroğlu", username: "kilicdarogluk" },
-  { name: "Recep Tayyip Erdoğan", username: "RTErdogan" },
-  { name: "Muharrem İnce", username: "vekilince" },
-  { name: "Sinan Oğan", username: "DrSinanOgan" },
-];
+const nominees = ["kilicdarogluk", "RTErdogan", "vekilince", "DrSinanOgan"];
 const settings = {
   dots: true,
   infinite: true,
@@ -51,10 +42,8 @@ const settings = {
     },
   ],
 };
-export default function TwitterCards() {
+export default function Politics() {
   const [loadedWidgets, setLoadedWidgets] = useState<number[]>([]);
-  const [showingTweets, setShowingTweets] = useState<number[]>([]);
-
   return (
     <div id="twitter-cards" className="page">
       <Typography.Title level={2} style={{ textAlign: "start", margin: 0 }}>
@@ -64,21 +53,21 @@ export default function TwitterCards() {
         Cumhurbaşkanı adaylarından son tweetler
       </Typography.Text>
       <Slider {...settings} autoplay={loadedWidgets.length === nominees.length}>
-        {nominees.map(({ name, username }, idx) => (
+        {nominees.map((username, idx) => (
           <div key={idx}>
-            {showingTweets.includes(idx) ? (
-              <>
-                <div
-                  style={{
-                    display: loadedWidgets.includes(idx) ? "none" : "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    height: 500,
-                  }}
-                >
-                  {!loadedWidgets.includes(idx) && <Spin indicator={antIcon} />}
-                </div>
+            <>
+              <div
+                style={{
+                  display: loadedWidgets.includes(idx) ? "none" : "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  height: 500,
+                }}
+              >
+                {!loadedWidgets.includes(idx) && <Spin />}
+              </div>
+              {loadedWidgets.includes(idx - 1) || idx === 0 ? (
                 <Timeline
                   onLoad={() => setLoadedWidgets((prev) => (!prev.includes(idx) ? [...prev, idx] : [...prev]))}
                   dataSource={{
@@ -90,25 +79,8 @@ export default function TwitterCards() {
                     width: "400",
                   }}
                 />
-              </>
-            ) : (
-              <div
-                style={{
-                  display: loadedWidgets.includes(idx) ? "none" : "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  textAlign: "center",
-                  height: 500,
-                }}
-              >
-                <Button
-                  type="link"
-                  onClick={() => setShowingTweets((prev) => (prev.includes(idx) ? [...prev] : [...prev, idx]))}
-                >
-                  {name} için son gelişmeleri göster
-                </Button>
-              </div>
-            )}
+              ) : null}
+            </>
           </div>
         ))}
       </Slider>

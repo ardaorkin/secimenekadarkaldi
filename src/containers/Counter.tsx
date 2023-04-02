@@ -65,41 +65,27 @@ export default function Counter() {
         <Divider />
         <Typography.Title level={4}>Seçim Sistemi</Typography.Title>
         <Typography.Paragraph>
-          Türkiye Büyük Millet Meclisi ve cumhurbaşkanlığı seçimleri beş yılda bir aynı günde yapılır. Türkiye Büyük
-          Millet Meclisi, üye tam sayısının beşte üç çoğunluğuyla seçimlerin yenilenmesine karar verebilir. Bu halde
-          Türkiye Büyük Millet Meclisi genel seçimi ile cumhurbaşkanlığı seçimi birlikte yapılır. Cumhurbaşkanının
-          seçimlerin yenilenmesine karar vermesi halinde, Türkiye Büyük Millet Meclisi genel seçimi ile cumhurbaşkanlığı
-          seçimi birlikte yapılır. Cumhurbaşkanının ikinci döneminde meclis tarafından seçimlerin yenilenmesine karar
-          verilmesi halinde, Cumhurbaşkanı bir defa daha aday olabilir. Seçimlerinin birlikte yenilenmesine karar
-          verilen meclisin ve cumhurbaşkanının yetki ve görevleri, yeni meclisin ve cumhurbaşkanının göreve başlamasına
-          kadar devam eder. Bu şekilde seçilen meclis ve cumhurbaşkanının görev süreleri de beş yıldır.
+          Türkiye'de genel seçimler için uygulanan seçim sistemi "D'Hondt" yöntemi ile belirlenen nispi temsil
+          sistemidir. Bu sistem, seçim bölgelerinde belirlenen milletvekili sayısı kadar sandalye dağıtımını, parti veya
+          ittifakların aldığı oy oranlarına göre yapar.
         </Typography.Paragraph>
         <Typography.Paragraph>
-          2007 Türkiye anayasa değişikliği referandumu'nda kabul edilen değişikliklere göre Cumhurbaşkanı adayının
-          seçilebilmek için geçerli oyların salt çoğunluğunu alması (en az yüzde 50 oran + 1 oy) gerekmektedir. Hiçbir
-          aday salt çoğunluğu sağlayamazsa, ilk turda en çok oy alan iki aday arasında ikinci tur yapılır ve ardından
-          salt çoğunluğu alan aday seçilir.
+          Seçmenler, milletvekillerinin belirlendiği seçim bölgelerinde, oy kullanarak tercih ettikleri parti veya
+          bağımsız adaylara oy verirler. Partilerin veya bağımsız adayların seçimleri kazanabilmeleri için belli bir oy
+          oranını geçmeleri gerekmektedir. Türkiye'de, genel seçimlerde baraj oranı %10'dur, yani bir parti veya
+          ittifak, seçimlerde aldığı oy oranı %10'un altında ise, temsil edilemez.
         </Typography.Paragraph>
         <Typography.Paragraph>
-          2007 Türkiye anayasa değişikliği referandumu'nda kabul edilen Anayasanın 101. maddesine göre cumhurbaşkanı, en
-          fazla iki defa olmak üzere 5 yıllık görev süresi için doğrudan halk tarafından seçilir. Ancak anayasanın 116.
-          maddesine göre son yapılan seçimler TBMM oy çoğunluğu kararıyla yenilenirse cumhurbaşkanı bir defa daha aday
-          olabilir. Cumhurbaşkanı meclisi kendi yetkisiyle yenilerse 3. kez aday olamaz.
+          D'Hondt yöntemi, her parti veya ittifakın aldığı oyların, birbirine bölünerek sıralamaya konulmasını sağlar.
+          Daha sonra, birinci sıradaki parti veya ittifakın aldığı oy sayısı, 1'e eşitlenir ve bu sayı diğer partilerin
+          veya ittifakların aldığı oy sayılarına bölünür. Bu işlem, her parti veya ittifak için ayrı ayrı yapılır ve
+          böylece her bir parti veya ittifakın aldığı milletvekili sayısı belirlenir.
         </Typography.Paragraph>
         <Typography.Paragraph>
-          Anayasanın 101. maddesine göre, bir adayın cumhurbaşkanlığı seçimine katılabilmesi için, en son parlamento
-          seçimlerinde tek başına veya birlikte geçerli oyların yüzde 5'ini almış siyasi partiler ya da mecliste grubu
-          bulunan siyasi partiler tarafından aday gösterilmesi gerekmektedir. Ayrıca, ilçe seçim kurullarında en az
-          100.000 seçmenin imzasını toplayabilen kişiler de aday olabilir.
-          <Typography.Text type="secondary" style={{ display: "block" }}>
-            Kaynak:{" "}
-            <a
-              href="https://tr.wikipedia.org/wiki/2023_T%C3%BCrkiye_cumhurba%C5%9Fkanl%C4%B1%C4%9F%C4%B1_se%C3%A7imi"
-              target="_blank"
-            >
-              Wikipedia
-            </a>
-          </Typography.Text>
+          Seçim sistemi, Türkiye'de cumhurbaşkanlığı seçimleri için de geçerlidir. Ancak, cumhurbaşkanlığı seçimleri
+          için baraj oranı %50'dir ve seçimler, doğrudan halk oylamasıyla yapılır. Cumhurbaşkanlığı seçimleri için
+          belirlenen adaylar, parti veya bağımsız olarak seçmenlerin oyuna sunulur ve en çok oy alan aday cumhurbaşkanı
+          seçilir.
         </Typography.Paragraph>
       </div>
     </div>
